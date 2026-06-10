@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>🌻 Sobre</title>
+<link rel="stylesheet" href="style.css"/>
+<style>
+
+.container { padding: 100px 20px 80px; }
+.box       { max-width: 700px; }
+
+.girassol-sobre {
+  display: block;
+  text-align: center;
+  font-size: 5rem;
+  margin-bottom: 6px;
+  animation: girar 8s linear infinite;
+}
+@keyframes girar {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+.subtitulo-sobre {
+  text-align: center;
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-size: 1rem;
+  color: var(--text-suave);
+  margin-bottom: 28px;
+  letter-spacing: .04em;
+}
+
+.info-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin: 28px 0;
+}
+@media (max-width: 500px) { .info-grid { grid-template-columns: 1fr; } }
+
+.info-item {
+  background: rgba(246,201,78,.12);
+  border: 1px solid rgba(246,201,78,.25);
+  border-radius: 16px;
+  padding: 18px 20px;
+  text-align: center;
+}
+.info-item .icone { font-size: 1.8rem; display: block; margin-bottom: 6px; }
+.info-item .label {
+  font-size: .72rem; letter-spacing: .25em; text-transform: uppercase;
+  color: var(--text-suave); font-weight: 600; display: block; margin-bottom: 4px;
+}
+.info-item .valor {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.1rem; font-weight: 600; color: var(--text);
+}
+
+.texto-sobre {
+  font-size: 1.05rem;
+  line-height: 1.9;
+  color: var(--text);
+  text-align: center;
+}
+
+nav{
+  width:calc(100% - 40px);max-width:900px;
+  padding:14px 24px;
+  display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:8px;
+  position:fixed;top:16px;left:50%;transform:translateX(-50%);
+  z-index:100;
+  background:rgba(255,253,245,.55);backdrop-filter:blur(14px);
+  border:1px solid rgba(255,255,255,.5);border-radius:50px;
+  box-shadow:0 6px 20px rgba(74,55,40,.10);
+}
+nav a{
+  text-decoration:none;color:var(--text);font-weight:600;font-size:.85rem;
+  padding:8px 16px;border-radius:30px;transition:.25s;
+}
+nav a:hover, nav a.ativo { background:rgba(246,201,78,.30); }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index6.html">💖 O que eu acho de você</a>
+  <a href="index7.html">✨ O que me lembra você</a>
+  <a href="index9.html">🎵 Músicas</a>
+  <a href="sobre.html" class="ativo">🌻 Sobre</a>
+</nav>
+
+<div class="container">
+  <div class="box">
+
+    <span class="girassol-sobre">🌻</span>
+    <h1>Sobre este site</h1>
+    <p class="subtitulo-sobre">feito com muito carinho, um byte de cada vez</p>
+
+    <div class="divider"></div>
+
+    <div class="info-grid">
+      <div class="info-item">
+        <span class="icone">👨‍💻</span>
+        <span class="label">Criado por</span>
+        <span class="valor">João</span>
+      </div>
+      <div class="info-item">
+        <span class="icone">💌</span>
+        <span class="label">Para</span>
+        <span class="valor">Princesa 💖</span>
+      </div>
+      <div class="info-item">
+        <span class="icone">🎂</span>
+        <span class="label">Motivo</span>
+        <span class="valor">18 anos 🥳</span>
+      </div>
+      <div class="info-item">
+        <span class="icone">🌻</span>
+        <span class="label">Tema</span>
+        <span class="valor">Girassol</span>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <p class="texto-sobre">
+      Bem, eu criei essa aba "Sobre" mais como um feedback, ou, se você preferir, como uma conversa mesmo, contando um pouco de como foi fazer o seu site e todo o processo por trás dele kkkkk.
+      <br><br>
+      Eu gostei bastante de fazer esse projeto. Foi uma experiência muito boa e também o primeiro site grande que eu fiz. No total, ele ficou com 1.956 linhas de código. Eu queria ter decorado mais, caprichado ainda mais no design e colocado mais detalhes, mas no fim até que gostei bastante do resultado.
+      <br><br>
+      Além disso, aprendi várias coisas novas durante o processo. Fiquei mais de duas semanas estudando, testando ideias e tentando descobrir como fazer cada coisa, porque eu queria construir praticamente tudo sozinho, sem depender tanto da IA. Claro que em algumas partes precisei pedir ajuda, mas isso também faz parte do aprendizado.
+      <br><br>
+      Eu queria ter colocado mais músicas e feito mais páginas de lyrics, mas sincronizar as músicas acabou sendo uma das partes mais difíceis para mim kkkkk. Mesmo assim, fiquei feliz com o resultado.
+      <br><br>
+      Todas as mensagens que estão aqui foram escritas por mim. E, embora eu não seja muito bom em fazer textos longos e normalmente acabe recorrendo à IA por falta de paciência, dessa vez valeu muito a pena ter feito tudo com as minhas próprias palavras.
+      <br><br>
+      Nesse site eu tentei expressar a forma como eu vejo você e também um pouco do que ainda sinto. A ideia inicial era ser apenas um simples parabéns de aniversário, mas eu fui me empolgando durante o processo e ele acabou se tornando algo muito maior do que eu tinha imaginado.
+      <br><br>
+      Eu queria estar passando o seu aniversário ao seu lado, mas como isso não foi possível, resolvi dedicar meu tempo a criar algo especial para você. Também tentei ao máximo não falar muito sobre os meus sentimentos para não transformar o seu aniversário em algo sobre mim, embora eu saiba que em algumas partes isso tenha acabado aparecendo.
+      <br><br>
+      Mas não me arrependo de nada.
+      <br><br>
+      Foram dias pensando, planejando, tendo ideias, corrigindo erros, estudando e tentando fazer esse projeto dar certo. Eu gostaria de ter feito designs melhores, mas como ainda sou um programador iniciante, quem sabe no futuro eu consiga criar algo ainda mais incrível.
+      <br><br>
+      Esse site foi feito do zero, com muito esforço, dedicação e carinho, especialmente para você.
+      <br><br>
+      Cada página, cada detalhe, cada música e cada palavra foram pensados com o objetivo de te fazer sorrir e mostrar o quanto você é especial para mim.
+      <br><br>
+      Nem sempre sou bom com palavras, mas quando se trata de você, eu tento dar o meu melhor.
+      <br><br>
+      Espero que você tenha gostado de cada parte dele e que, de alguma forma, ele tenha tornado o seu aniversário um pouco mais especial.
+      <br><br>
+      Obrigado por existir e por fazer parte da minha vida. 💛
+      <br><br>
+      E bem... eu falei que não queria falar dos meus sentimentos, mas quer saber?
+      <br><br>
+      Eu sei que as coisas mudaram. E talvez elas realmente precisassem mudar. No meio de tudo isso, eu percebi que precisava me tornar uma pessoa melhor.
+      <br><br>
+      Obrigado por, de certa forma, me fazer enxergar isso.
+      <br><br>
+      Hoje eu estou tentando ser melhor por mim, mas também porque você me inspirou a querer ser alguém melhor.
+      <br><br>
+      Talvez as coisas nunca voltem a ser como eram antes. Talvez voltem de uma forma diferente. Talvez voltem melhores. E tudo bem, qualquer que seja o caminho.
+      <br><br>
+      Mas quero que você saiba que, apesar de tudo, eu sempre estaria disposto a mudar por você. Não porque você me pediu, mas porque você foi uma das poucas pessoas que me fizeram querer evoluir de verdade.
+      <br><br>
+      E acima de qualquer coisa, eu só quero te ver feliz. Mesmo que essa felicidade não seja ao meu lado.
+      <br><br>
+      Porque amar alguém também é desejar que ela fique bem, independentemente de onde ela esteja.
+      <br><br>
+      E, por mais que o tempo passe, por mais que as coisas mudem, existe uma verdade que eu não consigo esconder:
+      <br><br>
+      <em>Eu ainda te amo.</em>
+    </p>
+
+    <div class="assinatura">— Com carinho, Juaum 💌</div>
+
+  </div>
+</div>
+
+<button class="voltar" onclick="location.href='index5.html'">Voltar</button>
+
+<script>
+const itens=['🌻','🌼','✨','💛','🌸'];
+function criarPetal(){
+  const el=document.createElement('div');el.className='petal';
+  el.textContent=itens[Math.floor(Math.random()*itens.length)];
+  el.style.left=Math.random()*100+'vw';
+  el.style.fontSize=(Math.random()*14+10)+'px';
+  el.style.animationDuration=(Math.random()*3+5)+'s';
+  document.body.appendChild(el);setTimeout(()=>el.remove(),8000);
+}
+setInterval(criarPetal,350);
+</script>
+</body>
+</html>

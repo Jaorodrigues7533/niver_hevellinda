@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Vamos lá! 💖</title>
+<link rel="stylesheet" href="style.css"/>
+<style>
+body{display:flex;justify-content:center;align-items:center;min-height:100vh;}
+
+.entrada{
+  position:relative;z-index:1;text-align:center;
+  max-width:580px;width:90%;
+  background:var(--glass);backdrop-filter:blur(20px);
+  border:1px solid var(--glass-borda);border-radius:var(--radius-card);
+  box-shadow:var(--sombra);padding:52px 40px;
+  animation:surgir 1.2s cubic-bezier(.22,1,.36,1) both;
+}
+.entrada::before{
+  content:'';position:absolute;top:0;left:50%;transform:translateX(-50%);
+  width:60%;height:3px;
+  background:linear-gradient(90deg,transparent,var(--amarelo),transparent);border-radius:50%;
+}
+@keyframes surgir{from{opacity:0;transform:translateY(40px);}to{opacity:1;transform:translateY(0);}}
+
+.icone{font-size:3rem;margin-bottom:20px;display:block;}
+h1{font-size:clamp(1.6rem,4vw,2.2rem);line-height:1.4;margin-bottom:32px;color:var(--text);}
+
+.mascote{
+  position:fixed;bottom:20px;right:20px;width:240px;z-index:5;
+  animation:flutuar 3s ease-in-out infinite;
+  filter:drop-shadow(0 8px 16px rgba(74,55,40,.18));
+}
+@keyframes flutuar{0%,100%{transform:translateY(0);}50%{transform:translateY(-12px);}}
+</style>
+</head>
+<body>
+
+<div class="entrada">
+  <span class="icone">🎉</span>
+  <h1>Enfim, chega de enrolação,<br>vamos lá! 💖</h1>
+  <button class="btn" onclick="location.href='index4.html'">Continue ✨</button>
+</div>
+
+<img src="charmander3.png" class="mascote" alt="Charmander"/>
+<button class="voltar" onclick="location.href='index2.html'">Voltar</button>
+
+<script>
+const itens=['🌻','🌼','✨','💛','🌸'];
+function criarPetal(){
+  const el=document.createElement('div');el.className='petal';
+  el.textContent=itens[Math.floor(Math.random()*itens.length)];
+  el.style.left=Math.random()*100+'vw';
+  el.style.fontSize=(Math.random()*14+10)+'px';
+  el.style.animationDuration=(Math.random()*3+5)+'s';
+  document.body.appendChild(el);setTimeout(()=>el.remove(),8000);
+}
+setInterval(criarPetal,400);
+</script>
+</body>
+</html>

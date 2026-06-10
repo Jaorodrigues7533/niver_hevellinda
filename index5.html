@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Feliz Aniversário 💖</title>
+<link rel="stylesheet" href="style.css"/>
+<style>
+/* ── nav ── */
+nav{
+  width:calc(100% - 40px);max-width:900px;
+  padding:14px 24px;
+  display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:8px;
+  position:fixed;top:16px;left:50%;transform:translateX(-50%);
+  z-index:100;
+  background:rgba(255,253,245,.55);backdrop-filter:blur(14px);
+  border:1px solid rgba(255,255,255,.5);border-radius:50px;
+  box-shadow:0 6px 20px rgba(74,55,40,.10);
+}
+nav a{
+  text-decoration:none;color:var(--text);font-weight:600;font-size:.85rem;
+  padding:8px 16px;border-radius:30px;transition:.25s;
+}
+nav a:hover{background:rgba(246,201,78,.25);}
+
+/* ── card ── */
+.container{padding:140px 20px 80px;}
+.aniv-card{
+  position:relative;max-width:440px;width:95%;margin:auto;
+  background:rgba(255,253,245,.22);backdrop-filter:blur(20px);
+  border:1px solid var(--glass-borda);border-radius:var(--radius-card);
+  box-shadow:var(--sombra);padding:36px 28px;
+  animation:surgir 1.2s cubic-bezier(.22,1,.36,1) both, balanco-card 5s ease-in-out 1.5s infinite;
+}
+@keyframes surgir{from{opacity:0;transform:translateY(40px);}to{opacity:1;transform:translateY(0);}}
+@keyframes balanco-card{0%,100%{transform:translateY(0);}50%{transform:translateY(-8px);}}
+
+.aniv-card::before{
+  content:'';position:absolute;top:0;left:50%;transform:translateX(-50%);
+  width:60%;height:3px;
+  background:linear-gradient(90deg,transparent,var(--amarelo),transparent);border-radius:50%;
+}
+
+/* mascote no canto do card */
+.pikachu{
+  position:absolute;top:-52px;right:-22px;width:160px;
+  animation:flutuar-pika 3s ease-in-out infinite;
+  filter:drop-shadow(0 6px 14px rgba(74,55,40,.18));
+  transform:rotate(8deg);
+}
+@keyframes flutuar-pika{
+  0%,100%{transform:rotate(8deg) translateY(0);}
+  50%{transform:rotate(8deg) translateY(-10px);}
+}
+
+/* foto circular */
+.foto-wrap{display:flex;flex-direction:column;align-items:center;margin-bottom:22px;}
+.foto{
+  width:120px;height:120px;border-radius:50%;object-fit:cover;
+  border:4px solid var(--branco);
+  box-shadow:0 6px 20px rgba(74,55,40,.18);margin-bottom:14px;
+}
+h1{margin-bottom:0;font-size:1.8rem;}
+
+.divider{width:60%;height:2px;margin:20px auto;
+  background:linear-gradient(90deg,transparent,var(--amarelo),transparent);border-radius:50%;}
+
+.texto{font-size:1rem;line-height:1.85;color:var(--text);text-align:center;}
+.assinatura{text-align:right;font-family:'Playfair Display',serif;
+  font-style:italic;font-size:1rem;color:var(--rosa-escuro);margin-top:24px;}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index6.html">💖 O que eu acho de você</a>
+  <a href="index7.html">✨ O que me lembra você</a>
+  <a href="index9.html">🎵 Músicas</a>
+  <a href="sobre.html">🌻 Sobre</a>
+</nav>
+
+<div class="container">
+  <div class="aniv-card">
+    <img src="pikachu.gif" class="pikachu" alt="Pikachu"/>
+
+    <div class="foto-wrap">
+      <img src="preta.jpg" class="foto" alt="Foto"/>
+      <h1>Feliz Aniversário 💖</h1>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="texto">
+      Feliz aniversário, princesa! 🎉❤️
+      <br><br>
+      Hoje é um dia muito especial, e eu não poderia deixar de te desejar um aniversário maravilhoso. Que o seu dia seja repleto de alegria, momentos inesquecíveis, carinho das pessoas que te amam e muitos motivos para sorrir.
+      <br><br>
+      Desejo que Deus abençoe a sua vida com muita saúde, felicidade, sucesso, paz e realizações. Que todos os seus sonhos possam se tornar realidade e que você nunca perca essa luz tão especial que existe dentro de você.
+      <br><br>
+      Não deixe que os desafios da vida te desanimem, pois você é uma pessoa forte, determinada e capaz de superar qualquer obstáculo. Continue sendo essa pessoa incrível, gentil e maravilhosa que você é.
+      <br><br>
+      Saiba que eu tenho muito orgulho de você e sou muito grato por ter você na minha vida. Você é uma pessoa muito especial para mim e sempre terá um lugar especial guardado no meu coração.
+      <br><br>
+      Aproveite muito o seu dia, porque você merece tudo de melhor que a vida pode oferecer.
+      <br><br>
+      Parabéns pelos seus 18tãoooo! 🥳🎂💖🌻
+    </div>
+
+    <div class="assinatura">— Com carinho, Juaum 💌</div>
+  </div>
+</div>
+
+<button class="voltar" onclick="location.href='index4.html'">Voltar</button>
+
+<script>
+const itens=['🌻','🌼','✨','💛','🌸'];
+function criarPetal(){
+  const el=document.createElement('div');el.className='petal';
+  el.textContent=itens[Math.floor(Math.random()*itens.length)];
+  el.style.left=Math.random()*100+'vw';
+  el.style.fontSize=(Math.random()*14+10)+'px';
+  el.style.animationDuration=(Math.random()*3+5)+'s';
+  document.body.appendChild(el);setTimeout(()=>el.remove(),8000);
+}
+setInterval(criarPetal,350);
+</script>
+</body>
+</html>

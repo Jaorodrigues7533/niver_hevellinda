@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>☀️ Sol</title>
+<link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+
+<div class="container">
+  <div class="box">
+
+    <h1>☀️ Sol</h1>
+
+    <img src="Sol.webp" alt="Sol" class="img"/>
+
+    <div class="divider"></div>
+
+    <p>
+      O sol também me lembra muito você.
+      <br><br>
+      E isso é engraçado, porque eu sempre reclamei do calor e dos dias quentes. Mas, quando o tempo fica nublado, frio ou chuvoso por muito tempo, eu percebo o quanto a presença do sol faz diferença.
+      <br><br>
+      Para mim, os dias mais bonitos são aqueles em que o sol aparece. Mesmo depois de uma chuva ou de um período inteiro de céu fechado, parece que tudo fica mais bonito quando ele surge novamente.
+      <br><br>
+      Talvez seja por isso que eu associe você ao sol. Porque, de certa forma, você teve esse efeito na minha vida. Sua presença deixava meus dias mais leves, mais tranquilos e mais felizes.
+      <br><br>
+      E vamos combinar: o sol é uma das coisas mais bonitas que existem. Ele aquece, ilumina e transforma completamente a paisagem sem precisar dizer uma única palavra.
+      <br><br>
+      Por isso, quando penso no sol, eu penso em você. Porque, para mim, você sempre foi alguém que iluminava o ambiente e fazia as coisas parecerem um pouco melhores só por estar ali.
+    </p>
+
+  </div>
+</div>
+
+<button class="voltar" onclick="location.href='index7.html'">Voltar</button>
+
+<script>
+const itens=['🌻','🌼','✨','💛','🌸'];
+function criarPetal(){
+  const el=document.createElement('div');el.className='petal';
+  el.textContent=itens[Math.floor(Math.random()*itens.length)];
+  el.style.left=Math.random()*100+'vw';
+  el.style.fontSize=(Math.random()*14+10)+'px';
+  el.style.animationDuration=(Math.random()*3+5)+'s';
+  document.body.appendChild(el);setTimeout(()=>el.remove(),8000);
+}
+setInterval(criarPetal,350);
+</script>
+</body>
+</html>

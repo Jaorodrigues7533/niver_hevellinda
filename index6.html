@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>O que eu acho de você 💖</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    .container {
+      padding: 100px 20px 80px;
+    }
+
+    .box {
+      max-width: 700px;
+    }
+
+    .foto {
+      width: 100%;
+      max-height: 500px;
+      object-fit: contain;
+      background: rgba(255,255,255,.15);
+      padding: 12px;
+      border-radius: 18px;
+      border: 3px solid rgba(255,255,255,.7);
+      box-shadow: 0 8px 24px rgba(74,55,40,.18);
+      margin-bottom: 28px;
+    }
+
+    .texto {
+      font-size: 1.05rem;
+      line-height: 1.9;
+      color: var(--text);
+      text-align: center;
+    }
+
+    nav {
+      width: calc(100% - 40px); max-width: 900px;
+      padding: 14px 24px;
+      display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 8px;
+      position: fixed; top: 16px; left: 50%; transform: translateX(-50%);
+      z-index: 100;
+      background: rgba(255,253,245,.55); backdrop-filter: blur(14px);
+      border: 1px solid rgba(255,255,255,.5); border-radius: 50px;
+      box-shadow: 0 6px 20px rgba(74,55,40,.10);
+    }
+    nav a {
+      text-decoration: none; color: var(--text); font-weight: 600; font-size: .85rem;
+      padding: 8px 16px; border-radius: 30px; transition: .25s;
+    }
+    nav a:hover, nav a.ativo { background: rgba(246,201,78,.30); }
+  </style>
+</head>
+
+<body>
+
+  <nav>
+    <a href="index6.html" class="ativo">💖 O que eu acho de você</a>
+    <a href="index7.html">✨ O que me lembra você</a>
+    <a href="index9.html">🎵 Músicas</a>
+    <a href="sobre.html">🌻 Sobre</a>
+  </nav>
+
+  <div class="container">
+    <div class="box">
+      <h1>💖 O que eu acho de você</h1>
+
+      <img src="hevi.jpeg" class="foto" alt="Foto" />
+
+      <div class="divider"></div>
+
+      <p class="texto">
+        Bem, o que eu acho de você?
+        <br><br>
+        Você é uma pessoa incrível, muito inteligente. Às vezes eu fico até impressionado com o quanto você é inteligente. Também te acho muito fofa e, embora eu brincasse com a sua altura, eu sempre achei isso uma gracinha.
+        <br><br>
+        Acho você muito cheirosa, com um perfume inesquecível, agradável e marcante. Sua risada é muito engraçada e contagiante. Seus olhos são algo em você que sempre me deixam bobo, porque eu os acho lindos. Seu cabelo também é maravilhoso e muito cheiroso.
+        <br><br>
+        Acho você linda e encantadora por completo. Você é uma pessoa calma, tranquila e agradável. As nossas conversas sempre me deixavam feliz e em paz. Na verdade, passar tempo com você, até mesmo em silêncio, sempre foi algo muito bom para mim.
+        <br><br>
+        Resumindo, eu te acho perfeita aos meus olhos. Você sempre foi uma pessoa incrível que eu admirei muito. Sempre admirei cada detalhe seu, até mesmo cada fio do seu cabelo. E tenho muito orgulho de você e da pessoa que você é.
+        <br><br>
+        E mesmo eu sendo meio cegueta, no nível de uma topeira, você sempre continuará sendo incrível aos meus olhos. Independentemente do tempo, das circunstâncias ou da distância, isso é algo que nunca vai mudar.
+      </p>
+
+      <div class="assinatura">— Juaum 💌</div>
+    </div>
+  </div>
+
+  <button class="voltar" onclick="location.href='index5.html'">Voltar</button>
+
+  <script>
+    const itens = ['🌻', '🌼', '✨', '💛', '🌸'];
+    function criarPetal() {
+      const el = document.createElement('div');
+      el.className = 'petal';
+      el.textContent = itens[Math.floor(Math.random() * itens.length)];
+      el.style.left = Math.random() * 100 + 'vw';
+      el.style.fontSize = (Math.random() * 14 + 10) + 'px';
+      el.style.animationDuration = (Math.random() * 3 + 5) + 's';
+      document.body.appendChild(el);
+      setTimeout(() => el.remove(), 8000);
+    }
+    setInterval(criarPetal, 350);
+  </script>
+</body>
+</html>

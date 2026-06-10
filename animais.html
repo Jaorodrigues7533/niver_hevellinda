@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>🐾 Animais</title>
+<link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+
+<div class="container">
+  <div class="box">
+
+    <h1>🐾 Animais</h1>
+
+    <img src="animais.jpg" alt="Animais" class="img"/>
+
+    <div class="divider"></div>
+
+    <p>
+      E tem um animal que sempre acaba me lembrando você: o famoso salsichinha mofado kkkkk.
+      <br><br>
+      Eu sei que a comparação é meio aleatória, mas na minha cabeça faz sentido. Acho que é porque lembro de você falando que queria ter um, e desde então toda vez que vejo um desses eu acabo lembrando de você.
+      <br><br>
+      Eles têm um jeitinho engraçado, meio bagunçado, cheio de personalidade e impossível de ignorar. Você olha uma vez e já acaba gostando.
+      <br><br>
+      E eu confesso que tenho um carinho especial por eles. Sempre que vejo um salsichinha, sinto um quentinho no coração e dou risada das caras e poses que eles fazem.
+      <br><br>
+      Talvez por isso eu associe você a eles. Não porque vocês sejam iguais, mas porque tanto você quanto os salsichinhas conseguem deixar as coisas mais leves e arrancar um sorriso sem nem perceber.
+    </p>
+
+  </div>
+</div>
+
+<button class="voltar" onclick="location.href='index7.html'">Voltar</button>
+
+<script>
+const itens=['🌻','🌼','✨','💛','🌸'];
+function criarPetal(){
+  const el=document.createElement('div');el.className='petal';
+  el.textContent=itens[Math.floor(Math.random()*itens.length)];
+  el.style.left=Math.random()*100+'vw';
+  el.style.fontSize=(Math.random()*14+10)+'px';
+  el.style.animationDuration=(Math.random()*3+5)+'s';
+  document.body.appendChild(el);setTimeout(()=>el.remove(),8000);
+}
+setInterval(criarPetal,350);
+</script>
+</body>
+</html>

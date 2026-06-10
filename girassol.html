@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>🌻 Girassol</title>
+<link rel="stylesheet" href="style.css"/>
+<style>
+.img-hero{
+  width:100%;height:320px;
+  object-fit:cover;object-position:center 30%;
+  border-radius:18px;
+  border:3px solid rgba(255,255,255,.65);
+  box-shadow:0 8px 28px rgba(74,55,40,.18);
+  margin-bottom:28px;
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+  <div class="box">
+
+    <h1>🌻 Girassol</h1>
+
+    <img src="girassol.jpg" alt="Girassol" class="img-hero"/>
+
+    <div class="divider"></div>
+
+    <p>
+      Tem uma flor que sempre me faz lembrar de você: o girassol.
+      <br><br>
+      Eu nunca parei para pensar muito no motivo, mas essa associação sempre aconteceu de forma natural. Acho que é porque ele tem algo que me lembra você. Seu cabelo, de alguma forma, me faz pensar nas pétalas dele, e seus olhos também entram nessa lembrança.
+      <br><br>
+      Mas acho que uma das razões mais engraçadas é por causa daquele short jeans florido que você usava kkkkk. Sempre que eu te via com ele, acabava associando você a flores, principalmente ao girassol.
+      <br><br>
+      Talvez eu goste dessa comparação porque o girassol passa uma sensação boa. É uma flor que chama atenção sem precisar de muito esforço, que transmite leveza e tem uma beleza própria. E quando eu penso em você, são características parecidas que vêm à minha cabeça.
+      <br><br>
+      Por isso, sempre que vejo um girassol, de alguma forma, acabo lembrando de você.
+    </p>
+
+  </div>
+</div>
+
+<button class="voltar" onclick="location.href='index7.html'">Voltar</button>
+
+<script>
+const itens=['🌻','🌼','✨','💛','🌸'];
+function criarPetal(){
+  const el=document.createElement('div');el.className='petal';
+  el.textContent=itens[Math.floor(Math.random()*itens.length)];
+  el.style.left=Math.random()*100+'vw';
+  el.style.fontSize=(Math.random()*14+10)+'px';
+  el.style.animationDuration=(Math.random()*3+5)+'s';
+  document.body.appendChild(el);setTimeout(()=>el.remove(),8000);
+}
+setInterval(criarPetal,350);
+</script>
+</body>
+</html>

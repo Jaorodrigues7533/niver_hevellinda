@@ -1,0 +1,217 @@
+/* =====================================================
+   TEMA GIRASSOL — CSS GLOBAL
+   Paleta: amarelo-mel, rosa-suave, branco-quente, verde-folha
+   ===================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Nunito:wght@300;400;600;700&display=swap');
+
+/* ── Reset ── */
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* ── Tokens ── */
+:root {
+  --amarelo:      #F6C94E;
+  --amarelo-claro:#FFF3C4;
+  --rosa:         #F4A7B9;
+  --rosa-escuro:  #E8799A;
+  --branco:       #FFFDF5;
+  --folha:        #6B8F5E;
+  --text:         #4A3728;
+  --text-suave:   rgba(74,55,40,.6);
+
+  --glass:        rgba(255,253,245,.18);
+  --glass-borda:  rgba(255,255,255,.30);
+  --sombra:       0 12px 40px rgba(74,55,40,.14);
+
+  --radius-card:  28px;
+  --radius-btn:   50px;
+}
+
+/* ── Fundo gradiente girassol ── */
+body {
+  min-height: 100vh;
+  background: linear-gradient(145deg, #FFF6D3 0%, #FFE0A3 35%, #FFD0C0 70%, #FFC4D6 100%);
+  font-family: 'Nunito', sans-serif;
+  color: var(--text);
+  overflow-x: hidden;
+  position: relative;
+}
+
+/* ── Pétalas de fundo decorativas (SVG inline via pseudo) ── */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image:
+    radial-gradient(ellipse 60% 40% at 10% 15%, rgba(246,201,78,.18) 0%, transparent 70%),
+    radial-gradient(ellipse 50% 60% at 90% 80%, rgba(244,167,185,.20) 0%, transparent 70%),
+    radial-gradient(ellipse 40% 30% at 50% 50%, rgba(255,255,255,.10) 0%, transparent 80%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ── Container padrão ── */
+.container {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 80px 20px;
+}
+
+/* ── Card vidro ── */
+.box, .card {
+  position: relative;
+  max-width: 860px;
+  width: 100%;
+  background: var(--glass);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--glass-borda);
+  border-radius: var(--radius-card);
+  box-shadow: var(--sombra);
+  padding: 36px 32px;
+  color: var(--text);
+}
+
+/* Faixa dourada no topo do card */
+.box::before, .card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 50%;
+  transform: translateX(-50%);
+  width: 60%;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, var(--amarelo), transparent);
+  border-radius: 50%;
+}
+
+/* ── Título ── */
+h1 {
+  font-family: 'Playfair Display', serif;
+  text-align: center;
+  font-size: clamp(1.8rem, 4vw, 2.4rem);
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 24px;
+  letter-spacing: -.01em;
+}
+
+/* ── Imagem ── */
+.img {
+  width: 100%;
+  height: 320px;
+  border-radius: 18px;
+  object-fit: cover;
+  object-position: center;
+  margin-bottom: 28px;
+  box-shadow: 0 8px 24px rgba(74,55,40,.18);
+  border: 3px solid rgba(255,255,255,.6);
+}
+
+/* ── Texto corpo ── */
+p {
+  font-size: 1.05rem;
+  line-height: 1.85;
+  color: var(--text);
+  text-align: justify;
+}
+
+/* ── Botão voltar fixo ── */
+.voltar {
+  position: fixed;
+  left: 22px;
+  bottom: 22px;
+  padding: 13px 26px;
+  border: none;
+  border-radius: var(--radius-btn);
+  background: var(--branco);
+  color: var(--rosa-escuro);
+  font-family: 'Nunito', sans-serif;
+  font-weight: 700;
+  font-size: .92rem;
+  cursor: pointer;
+  box-shadow: 0 6px 18px rgba(74,55,40,.15);
+  z-index: 100;
+  transition: transform .2s, box-shadow .2s;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.voltar:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 24px rgba(74,55,40,.20);
+}
+.voltar::before { content: '←'; font-size: 1rem; }
+
+/* ── Botão primário ── */
+.btn {
+  display: inline-block;
+  padding: 12px 28px;
+  background: var(--branco);
+  color: var(--rosa-escuro);
+  font-family: 'Nunito', sans-serif;
+  font-weight: 700;
+  font-size: .92rem;
+  text-decoration: none;
+  border: none;
+  border-radius: var(--radius-btn);
+  box-shadow: 0 4px 12px rgba(74,55,40,.13);
+  cursor: pointer;
+  transition: transform .2s, background .2s;
+}
+.btn:hover {
+  transform: translateY(-2px);
+  background: var(--amarelo-claro);
+}
+
+/* ── Girassóis flutuantes ── */
+.petal {
+  position: fixed;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0;
+  animation: cair 7s linear forwards;
+  font-size: 1.4rem;
+  user-select: none;
+}
+
+@keyframes cair {
+  0%   { transform: translateY(-40px) rotate(0deg);   opacity: 0; }
+  10%  { opacity: .8; }
+  90%  { opacity: .6; }
+  100% { transform: translateY(110vh) rotate(360deg); opacity: 0; }
+}
+
+/* ── Linha divisória ── */
+.divider {
+  width: 50%;
+  height: 2px;
+  margin: 22px auto;
+  background: linear-gradient(90deg, transparent, var(--amarelo), transparent);
+  border-radius: 50%;
+}
+
+/* ── Assinatura ── */
+.assinatura {
+  text-align: right;
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-size: 1.05rem;
+  color: var(--rosa-escuro);
+  margin-top: 28px;
+}
+
+/* ── Responsivo ── */
+@media (max-width: 520px) {
+  .box, .card { padding: 24px 18px; }
+  h1 { font-size: 1.5rem; }
+  .img { height: 200px; }
+}

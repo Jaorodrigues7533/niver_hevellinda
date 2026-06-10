@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>🎨 Cores</title>
+<link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+
+<div class="container">
+  <div class="box">
+
+    <h1>🎨 Cores</h1>
+
+    <img src="cores.png" alt="Cores" class="img"/>
+
+    <div class="divider"></div>
+
+    <p>
+      Sabe, uma cor que sempre me lembra você é o amarelo. Eu nunca soube explicar exatamente o porquê, mas toda vez que vejo essa cor eu acabo pensando em você.
+      <br><br>
+      Talvez seja porque o amarelo me passa uma sensação de esperança e otimismo. É uma cor que me faz lembrar de coisas boas, de dias mais leves e de momentos felizes. E, de alguma forma, você me transmite exatamente isso.
+      <br><br>
+      Você sempre foi uma pessoa que despertou em mim esperança, que me fez acreditar que as coisas poderiam dar certo e que me trouxe uma sensação de tranquilidade e felicidade que é difícil explicar.
+      <br><br>
+      E acho que o amarelo combina com você também. É uma cor bonita, leve e que chama atenção de uma forma especial, sem precisar forçar nada. De certa forma, ela me lembra o jeito como eu te vejo.
+    </p>
+
+  </div>
+</div>
+
+<button class="voltar" onclick="location.href='index7.html'">Voltar</button>
+
+<script>
+const itens=['🌻','🌼','✨','💛','🌸'];
+function criarPetal(){
+  const el=document.createElement('div');el.className='petal';
+  el.textContent=itens[Math.floor(Math.random()*itens.length)];
+  el.style.left=Math.random()*100+'vw';
+  el.style.fontSize=(Math.random()*14+10)+'px';
+  el.style.animationDuration=(Math.random()*3+5)+'s';
+  document.body.appendChild(el);setTimeout(()=>el.remove(),8000);
+}
+setInterval(criarPetal,350);
+</script>
+</body>
+</html>

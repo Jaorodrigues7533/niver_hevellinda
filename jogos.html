@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>🎮 Jogos</title>
+<link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+
+<div class="container">
+  <div class="box">
+
+    <h1>🎮 Jogos</h1>
+
+    <img src="jogos.jpg" alt="Jogos" class="img"/>
+
+    <div class="divider"></div>
+
+    <p>
+      Falando de jogos, você me lembra vários deles.
+      <br><br>
+      O primeiro que vem à minha cabeça é Genshin Impact kkkkk. Para ser sincero, eu nunca cheguei a jogar de verdade, mas era um jogo que eu tinha vontade de experimentar com você. Sempre que eu ouvia alguém falar dele, acabava lembrando de você.
+      <br><br>
+      Stardew Valley também me lembra muito nós dois. Principalmente da nossa época de fazendeiros kkkkk. Nossas fazendas talvez não tenham ido muito para frente, mas as risadas e os momentos que passamos jogando juntos valeram muito mais do que qualquer plantação.
+      <br><br>
+      Você também me lembra os jogos de terror do Roblox. Até hoje eu rio quando lembro da gente jogando. Eu morria de medo em vários momentos, mas, mesmo assim, foram alguns dos momentos mais divertidos e felizes que vivi ao seu lado. De alguma forma, até levar susto ficava divertido quando era com você.
+      <br><br>
+      Mas, se existe um jogo que realmente me faz lembrar de você, é Pokémon Fire Red.
+      <br><br>
+      Para ser sincero, eu voltei a jogar por sua causa. No começo, era só porque eu queria ter mais assunto para conversar com você. Só que, sem perceber, fui me envolvendo no jogo de novo. E o mais engraçado é que, depois de quase 9 anos começando e abandonando a jornada várias vezes, eu finalmente consegui zerar kkkkk.
+      <br><br>
+      E sabe o que eu mais gostava? Não era nem derrotar a Elite Four ou capturar Pokémon raros. Era conversar sobre Pokémon com você. Porque você conseguia transformar algo simples em algo especial.
+      <br><br>
+      Por isso, sempre que vejo esses jogos, não penso apenas neles. Eu penso nas lembranças que eles me trazem. E, em quase todas elas, você está presente.
+    </p>
+
+  </div>
+</div>
+
+<button class="voltar" onclick="location.href='index7.html'">Voltar</button>
+
+<script>
+const itens=['🌻','🌼','✨','💛','🌸','🎮'];
+function criarPetal(){
+  const el=document.createElement('div');el.className='petal';
+  el.textContent=itens[Math.floor(Math.random()*itens.length)];
+  el.style.left=Math.random()*100+'vw';
+  el.style.fontSize=(Math.random()*14+10)+'px';
+  el.style.animationDuration=(Math.random()*3+5)+'s';
+  document.body.appendChild(el);setTimeout(()=>el.remove(),8000);
+}
+setInterval(criarPetal,350);
+</script>
+</body>
+</html>

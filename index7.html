@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Coisas que me lembram você 💖</title>
+<link rel="stylesheet" href="style.css"/>
+<style>
+/* ── override container para layout de grid ── */
+.container{
+  flex-direction:column;
+  justify-content:flex-start;
+  padding:90px 24px 80px;
+}
+
+.titulo{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(1.8rem,4vw,2.4rem);
+  font-weight:600;
+  color:var(--text);
+  text-align:center;
+  margin-bottom:48px;
+  position:relative;z-index:1;
+}
+
+.grid{
+  max-width:1100px;width:100%;
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(240px,1fr));
+  gap:24px;
+  position:relative;z-index:1;
+}
+
+/* ── card de categoria ── */
+.catcard{
+  background:rgba(255,253,245,.22);
+  backdrop-filter:blur(16px);
+  border:1px solid var(--glass-borda);
+  border-radius:22px;
+  overflow:hidden;
+  box-shadow:0 8px 22px rgba(74,55,40,.12);
+  transition:transform .3s, box-shadow .3s;
+}
+.catcard:hover{
+  transform:translateY(-8px) scale(1.02);
+  box-shadow:0 16px 36px rgba(74,55,40,.18);
+}
+
+.catcard img{
+  width:100%;height:190px;
+  object-fit:cover;object-position:center;
+  border-bottom:2px solid rgba(246,201,78,.35);
+  transition:transform .4s;
+}
+.catcard:hover img{transform:scale(1.05);}
+
+.catcard-body{
+  padding:18px 20px 20px;
+  text-align:center;
+  background:rgba(255,253,245,.15);
+}
+.catcard-body h2{
+  font-family:'Playfair Display',serif;
+  font-size:1.2rem;font-weight:600;
+  color:var(--text);margin-bottom:14px;
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+  <h1 class="titulo">🌻 Coisas que me lembram você 🌻</h1>
+
+  <div class="grid">
+
+    <div class="catcard">
+      <img src="girassol.jpg" alt="Girassol"/>
+      <div class="catcard-body">
+        <h2>🌻 Girassol</h2>
+        <a href="girassol.html" class="btn">Ver mais</a>
+      </div>
+    </div>
+
+    <div class="catcard">
+      <img src="cores.png" alt="Cores"/>
+      <div class="catcard-body">
+        <h2>🎨 Cores</h2>
+        <a href="cores.html" class="btn">Ver mais</a>
+      </div>
+    </div>
+
+    <div class="catcard">
+      <img src="animais.jpg" alt="Animais"/>
+      <div class="catcard-body">
+        <h2>🐾 Animais</h2>
+        <a href="animais.html" class="btn">Ver mais</a>
+      </div>
+    </div>
+
+    <div class="catcard">
+      <img src="Sol.webp" alt="Sol"/>
+      <div class="catcard-body">
+        <h2>☀️ Sol</h2>
+        <a href="Sol.html" class="btn">Ver mais</a>
+      </div>
+    </div>
+
+    <div class="catcard">
+      <img src="dias.png" alt="Dias"/>
+      <div class="catcard-body">
+        <h2>📅 Dias</h2>
+        <a href="dias.html" class="btn">Ver mais</a>
+      </div>
+    </div>
+
+    <div class="catcard">
+      <img src="pokemon.jpg" alt="Pokémon"/>
+      <div class="catcard-body">
+        <h2>⚡ Pokémon</h2>
+        <a href="pokemon.html" class="btn">Ver mais</a>
+      </div>
+    </div>
+
+    <div class="catcard">
+      <img src="jogos.jpg" alt="Jogos"/>
+      <div class="catcard-body">
+        <h2>🎮 Jogos</h2>
+        <a href="jogos.html" class="btn">Ver mais</a>
+      </div>
+    </div>
+
+    <div class="catcard">
+      <img src="outros.jpeg" alt="Outros"/>
+      <div class="catcard-body">
+        <h2>💖 Outros</h2>
+        <a href="outros.html" class="btn">Ver mais</a>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<button class="voltar" onclick="location.href='index5.html'">Voltar</button>
+
+<script>
+const itens=['🌻','🌼','✨','💛','🌸'];
+function criarPetal(){
+  const el=document.createElement('div');el.className='petal';
+  el.textContent=itens[Math.floor(Math.random()*itens.length)];
+  el.style.left=Math.random()*100+'vw';
+  el.style.fontSize=(Math.random()*14+10)+'px';
+  el.style.animationDuration=(Math.random()*3+5)+'s';
+  document.body.appendChild(el);setTimeout(()=>el.remove(),8000);
+}
+setInterval(criarPetal,350);
+</script>
+</body>
+</html>

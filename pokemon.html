@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>⚡ Pokémon</title>
+<link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+
+<div class="container">
+  <div class="box">
+
+    <h1>⚡ Pokémon</h1>
+
+    <img src="pokemon.jpg" alt="Pokémon" class="img"/>
+
+    <div class="divider"></div>
+
+    <p>
+      Falando de Pokémon, eu sempre acabo te associando a dois em especial: o Eevee e o Charizard.
+      <br><br>
+      O Charizard porque, se eu não me engano, ele foi o seu inicial no Fire Red. Para ser sincero, antigamente eu nem gostava tanto dele kkkkk. Mas, com o tempo, fui aprendendo a gostar. Acho que porque ele acabou virando uma lembrança sua para mim.
+      <br><br>
+      Mas, se eu tivesse que escolher um Pokémon que realmente me faz pensar em você, seria o Eevee.
+      <br><br>
+      Não sei explicar exatamente o motivo, mas ele sempre teve algo que me lembra você. Talvez seja pela fofura dele, pelo jeito carismático ou simplesmente pela sensação boa que ele transmite. Sempre que vejo um Eevee, eu acabo lembrando de você.
+      <br><br>
+      E tem outra coisa que me faz associá-lo ainda mais a você: as evoluções dele. O Eevee pode seguir vários caminhos diferentes e, mesmo mudando, continua sendo especial em cada uma de suas formas.
+      <br><br>
+      Isso me faz pensar em você. Porque, independentemente da fase da sua vida, das mudanças que aconteçam ou do caminho que você escolha seguir, você continua sendo alguém especial. Assim como cada evolução do Eevee tem suas próprias qualidades e sua própria beleza, você também tem inúmeras qualidades que fazem de você uma pessoa única.
+      <br><br>
+      Então, quando penso em Pokémon, você sempre acaba aparecendo na minha cabeça. Seja pelo Charizard, que me lembra momentos específicos seus, ou pelo Eevee, que me lembra o quanto você é especial e admirável do seu próprio jeito.
+    </p>
+
+  </div>
+</div>
+
+<button class="voltar" onclick="location.href='index7.html'">Voltar</button>
+
+<script>
+const itens=['🌻','🌼','✨','💛','🌸','⚡'];
+function criarPetal(){
+  const el=document.createElement('div');el.className='petal';
+  el.textContent=itens[Math.floor(Math.random()*itens.length)];
+  el.style.left=Math.random()*100+'vw';
+  el.style.fontSize=(Math.random()*14+10)+'px';
+  el.style.animationDuration=(Math.random()*3+5)+'s';
+  document.body.appendChild(el);setTimeout(()=>el.remove(),8000);
+}
+setInterval(criarPetal,350);
+</script>
+</body>
+</html>

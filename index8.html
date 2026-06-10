@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>🎵 Música que me lembra você</title>
+<link rel="stylesheet" href="style.css"/>
+<style>
+/* ── Player card ── */
+.music-card{
+  max-width:660px;width:95%;
+  background:rgba(255,253,245,.22);backdrop-filter:blur(20px);
+  border:1px solid var(--glass-borda);border-radius:var(--radius-card);
+  box-shadow:var(--sombra);padding:40px 36px;
+  position:relative;z-index:1;
+  animation:surgir 1.1s cubic-bezier(.22,1,.36,1) both;
+}
+.music-card::before{
+  content:'';position:absolute;top:0;left:50%;transform:translateX(-50%);
+  width:60%;height:3px;
+  background:linear-gradient(90deg,transparent,var(--amarelo),transparent);border-radius:50%;
+}
+@keyframes surgir{from{opacity:0;transform:translateY(40px);}to{opacity:1;transform:translateY(0);}}
+
+.section-label{
+  font-size:.75rem;letter-spacing:.35em;text-transform:uppercase;
+  color:var(--rosa-escuro);font-weight:600;text-align:center;
+  margin-bottom:32px;
+}
+
+/* topo: vinil + info */
+.card-top{display:flex;align-items:center;gap:28px;margin-bottom:28px;}
+
+/* ── Vinil ── */
+.vinyl-wrap{flex-shrink:0;position:relative;width:110px;height:110px;}
+.vinyl{
+  width:110px;height:110px;border-radius:50%;
+  background:
+    radial-gradient(circle at 50%,#5a3e2b 0%,#5a3e2b 18%,transparent 18%,transparent 20%,
+    #7a5a3a 20%,#7a5a3a 30%,#6b4d2e 30%,#6b4d2e 38%,
+    #80603a 38%,#80603a 46%,#6b4d2e 46%,#6b4d2e 54%,
+    #7a5a3a 54%,#7a5a3a 62%,#614530 62%,#614530 70%,
+    #7a5a3a 70%,#7a5a3a 78%,#6b4d2e 78%,#6b4d2e 86%,
+    #80603a 86%,#80603a 94%,#7a5a3a 94%,#7a5a3a 100%);
+  box-shadow:0 0 0 2px rgba(246,201,78,.4),0 8px 28px rgba(74,55,40,.35);
+  animation:spinVinyl 7s linear infinite;
+  animation-play-state:paused;
+}
+.vinyl::after{
+  content:'';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
+  width:20px;height:20px;border-radius:50%;
+  background:radial-gradient(circle,var(--amarelo) 0%,#d4a020 60%,#9a7010 100%);
+  box-shadow:0 0 10px rgba(246,201,78,.6);
+}
+@keyframes spinVinyl{to{transform:rotate(360deg);}}
+.vinyl-shine{
+  position:absolute;top:8px;left:12px;
+  width:36px;height:18px;
+  background:radial-gradient(ellipse,rgba(255,255,255,.2) 0%,transparent 80%);
+  border-radius:50%;pointer-events:none;transform:rotate(-30deg);
+}
+
+/* info da música */
+.song-info{flex:1;min-width:0;}
+.song-label{font-size:.68rem;letter-spacing:.3em;text-transform:uppercase;
+  color:var(--rosa-escuro);font-weight:600;margin-bottom:6px;}
+.song-title{font-family:'Playfair Display',serif;
+  font-size:clamp(1.2rem,3vw,1.7rem);font-weight:600;
+  color:var(--text);line-height:1.2;margin-bottom:4px;}
+.song-artist{font-size:.85rem;color:var(--text-suave);font-weight:400;}
+
+/* equalizador */
+.eq-wrap{display:flex;align-items:flex-end;gap:3px;height:26px;margin-top:12px;}
+.eq-bar{width:4px;border-radius:2px;
+  background:linear-gradient(to top,var(--rosa-escuro),var(--amarelo));
+  height:4px;transform-origin:bottom;}
+.eq-bar.playing{animation:eqAnim var(--d,.4s) ease-in-out infinite alternate;}
+@keyframes eqAnim{from{height:4px;opacity:.4;}to{height:var(--h,20px);opacity:1;}}
+
+/* divider */
+.divider-player{width:100%;height:1px;
+  background:linear-gradient(90deg,transparent,rgba(74,55,40,.12),transparent);
+  margin-bottom:24px;}
+
+/* mensagem */
+.message{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(.9rem,2vw,1rem);font-style:italic;
+  color:var(--text-suave);line-height:1.8;text-align:center;
+  margin-bottom:26px;
+}
+
+/* ── Letras karaokê ── */
+.lyrics-stage{
+  background:rgba(246,201,78,.06);
+  border:1px solid rgba(246,201,78,.2);
+  border-radius:16px;padding:28px 24px;
+  margin-bottom:26px;min-height:140px;
+  display:flex;flex-direction:column;
+  align-items:center;justify-content:center;gap:10px;
+  position:relative;overflow:hidden;
+}
+.lyrics-stage::before{
+  content:'"';position:absolute;top:-14px;left:16px;
+  font-family:'Playfair Display',serif;font-size:4rem;
+  color:rgba(246,201,78,.18);line-height:1;pointer-events:none;
+}
+.lyric-row{
+  display:flex;flex-wrap:wrap;justify-content:center;gap:4px 8px;
+  transition:opacity .5s,transform .5s;opacity:.15;transform:scale(.96);
+}
+.lyric-row.active{opacity:1;transform:scale(1);}
+.lyric-row.done{opacity:.25;transform:scale(.97);}
+.word{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(1.1rem,3vw,1.5rem);font-weight:400;
+  color:var(--text-suave);letter-spacing:.02em;display:inline-block;
+  transition:color .2s,text-shadow .2s,transform .18s;line-height:1.4;
+}
+.word.sung{color:rgba(232,121,154,.7);}
+.word.current{
+  color:var(--text);
+  text-shadow:0 0 16px rgba(246,201,78,.8),0 0 36px rgba(246,201,78,.3);
+  transform:scale(1.1);
+}
+
+/* ── Player ── */
+.player{display:flex;flex-direction:column;gap:12px;}
+.progress-wrap{display:flex;align-items:center;gap:10px;}
+.time{font-size:.7rem;color:var(--text-suave);font-variant-numeric:tabular-nums;
+  letter-spacing:.05em;min-width:32px;text-align:center;}
+.progress-bar{
+  flex:1;height:4px;background:rgba(74,55,40,.12);border-radius:50px;
+  position:relative;cursor:pointer;transition:height .15s;
+}
+.progress-bar:hover{height:6px;}
+.progress-fill{
+  height:100%;border-radius:50px;
+  background:linear-gradient(90deg,var(--rosa-escuro),var(--amarelo));
+  width:0%;transition:width .1s linear;position:relative;
+}
+.progress-fill::after{
+  content:'';position:absolute;right:-5px;top:50%;transform:translateY(-50%);
+  width:10px;height:10px;border-radius:50%;
+  background:var(--amarelo);box-shadow:0 0 8px rgba(246,201,78,.7);
+  opacity:0;transition:opacity .2s;
+}
+.progress-bar:hover .progress-fill::after{opacity:1;}
+
+.controls{display:flex;align-items:center;justify-content:center;gap:16px;}
+.ctrl-btn{
+  background:none;border:none;cursor:pointer;color:var(--text-suave);
+  transition:color .2s,transform .15s;
+  display:flex;align-items:center;justify-content:center;
+  padding:6px;border-radius:50%;
+}
+.ctrl-btn:hover{color:var(--text);transform:scale(1.12);}
+.play-btn{
+  width:52px;height:52px;border-radius:50%;
+  background:linear-gradient(135deg,var(--rosa-escuro),var(--amarelo));
+  color:var(--branco);
+  box-shadow:0 0 0 6px rgba(246,201,78,.15),0 6px 20px rgba(246,201,78,.35);
+  transition:transform .2s,box-shadow .2s;
+}
+.play-btn:hover{
+  transform:scale(1.08);
+  box-shadow:0 0 0 8px rgba(246,201,78,.25),0 8px 28px rgba(246,201,78,.45);
+}
+
+.volume-wrap{display:flex;align-items:center;gap:10px;justify-content:center;}
+.vol-icon{color:var(--text-suave);flex-shrink:0;}
+input[type=range].vol-slider{
+  -webkit-appearance:none;appearance:none;
+  width:88px;height:3px;border-radius:50px;
+  background:rgba(74,55,40,.15);outline:none;cursor:pointer;
+}
+input[type=range].vol-slider::-webkit-slider-thumb{
+  -webkit-appearance:none;width:13px;height:13px;border-radius:50%;
+  background:var(--amarelo);cursor:pointer;
+  box-shadow:0 0 6px rgba(246,201,78,.6);
+}
+input[type=range].vol-slider::-moz-range-thumb{
+  width:13px;height:13px;border:none;border-radius:50%;
+  background:var(--amarelo);cursor:pointer;
+}
+#audio{display:none;}
+
+.footer-note{
+  margin-top:36px;
+  font-family:'Playfair Display',serif;font-size:.85rem;font-style:italic;
+  color:var(--text-suave);letter-spacing:.08em;text-align:center;
+  opacity:0;animation:fadeIn 1s ease 3s forwards;
+}
+@keyframes fadeIn{to{opacity:1;}}
+
+@media(max-width:520px){
+  .music-card{padding:28px 18px;}
+  .card-top{flex-direction:column;text-align:center;gap:14px;}
+  .vinyl-wrap,.vinyl{width:86px;height:86px;}
+  input[type=range].vol-slider{width:68px;}
+  .lyrics-stage{padding:20px 12px;}
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+  <div class="music-card">
+
+    <p class="section-label">🎵 Música que me lembra você</p>
+
+    <div class="card-top">
+      <div class="vinyl-wrap">
+        <div class="vinyl" id="vinyl"></div>
+        <div class="vinyl-shine"></div>
+      </div>
+      <div class="song-info">
+        <p class="song-label">agora tocando</p>
+        <h2 class="song-title">Come Back</h2>
+        <p class="song-artist">The Five Stairsteps</p>
+        <div class="eq-wrap" id="eqWrap">
+          <div class="eq-bar" style="--h:10px;--d:.38s"></div>
+          <div class="eq-bar" style="--h:18px;--d:.31s"></div>
+          <div class="eq-bar" style="--h:24px;--d:.44s"></div>
+          <div class="eq-bar" style="--h:14px;--d:.27s"></div>
+          <div class="eq-bar" style="--h:20px;--d:.35s"></div>
+          <div class="eq-bar" style="--h:8px; --d:.48s"></div>
+          <div class="eq-bar" style="--h:22px;--d:.29s"></div>
+          <div class="eq-bar" style="--h:16px;--d:.41s"></div>
+          <div class="eq-bar" style="--h:26px;--d:.33s"></div>
+          <div class="eq-bar" style="--h:12px;--d:.37s"></div>
+          <div class="eq-bar" style="--h:20px;--d:.43s"></div>
+          <div class="eq-bar" style="--h:6px; --d:.30s"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="divider-player"></div>
+
+    <p class="message">
+      "Tem músicas que carregam sentimentos que nunca desaparecem.<br>
+      Essa sempre me faz lembrar de você."
+    </p>
+
+    <div class="lyrics-stage" id="lyricsStage"></div>
+
+    <div class="player">
+      <div class="progress-wrap">
+        <span class="time" id="timeCur">0:00</span>
+        <div class="progress-bar" id="progressBar">
+          <div class="progress-fill" id="progressFill"></div>
+        </div>
+        <span class="time" id="timeDur">0:00</span>
+      </div>
+      <div class="controls">
+        <button class="ctrl-btn" onclick="seek(-5)" title="Voltar 5s">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 .49-3.5"/>
+          </svg>
+        </button>
+        <button class="ctrl-btn play-btn" id="playBtn" onclick="togglePlay()">
+          <svg id="iconPlay"  width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><polygon points="5,3 19,12 5,21"/></svg>
+          <svg id="iconPause" width="22" height="22" viewBox="0 0 24 24" fill="currentColor" style="display:none"><rect x="6" y="4" width="4" height="16" rx="1"/><rect x="14" y="4" width="4" height="16" rx="1"/></svg>
+        </button>
+        <button class="ctrl-btn" onclick="seek(5)" title="Avançar 5s">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 1 1-.49-3.5"/>
+          </svg>
+        </button>
+      </div>
+      <div class="volume-wrap">
+        <svg class="vol-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+          <polygon points="11,5 6,9 2,9 2,15 6,15 11,19"/>
+          <path d="M19.07 4.93a10 10 0 0 1 0 14.14"/>
+          <path d="M15.54 8.46a5 5 0 0 1 0 7.07"/>
+        </svg>
+        <input type="range" class="vol-slider" id="volSlider" min="0" max="1" step="0.01" value="0.85"/>
+      </div>
+    </div>
+
+    <audio id="audio" src="musica.mp3" preload="auto"></audio>
+
+    <p class="footer-note">algumas músicas são memórias que nunca saem 🌻</p>
+  </div>
+</div>
+
+<button class="voltar" onclick="location.href='index9.html'">Voltar</button>
+
+<script>
+/* ── Letras & timestamps (preservados do original) ── */
+const lyrics = [
+  { words: ["If","you","really","love","me","(ooh)"] },
+  { words: ["Let","me","be","your","fool"] },
+  { words: ["Just","come","back","(come","back)","to","me","(come","back)"] },
+  { words: ["Come","back","(come","back)","to","me"] },
+];
+const timestamps = [
+  [0,0,1.50],[0,1,1.90],[0,2,2.40],[0,3,2.90],[0,4,3.50],[0,5,5.20],
+  [1,0,10.20],[1,1,10.80],[1,2,11.50],[1,3,12.20],[1,4,13.00],
+  [2,0,14.00],[2,1,15.00],[2,2,16.00],[2,3,17.00],[2,4,18.00],
+  [2,5,19.00],[2,6,20.50],[2,7,22.00],[2,8,23.50],
+  [3,0,25.00],[3,1,26.50],[3,2,28.00],[3,3,29.50],[3,4,31.00],[3,5,32.00]
+];
+
+/* ── Construir DOM ── */
+const stage=document.getElementById('lyricsStage');
+const rowEls=[],wordEls=[];
+lyrics.forEach((line,li)=>{
+  const row=document.createElement('div');row.className='lyric-row';
+  const wRow=[];
+  line.words.forEach(w=>{
+    const span=document.createElement('span');span.className='word';span.textContent=w;
+    row.appendChild(span);wRow.push(span);
+  });
+  stage.appendChild(row);rowEls.push(row);wordEls.push(wRow);
+});
+
+/* ── Karaokê engine ── */
+let lastLine=-1,lastWord=-1;
+function updateLyrics(t){
+  let aLine=-1,aWord=-1;
+  for(let i=timestamps.length-1;i>=0;i--){
+    const[li,wi,ts]=timestamps[i];
+    if(t>=ts){aLine=li;aWord=wi;break;}
+  }
+  if(aLine===lastLine&&aWord===lastWord)return;
+  lastLine=aLine;lastWord=aWord;
+  rowEls.forEach((row,li)=>{
+    row.classList.remove('active','done');
+    if(li<aLine)row.classList.add('done');
+    else if(li===aLine)row.classList.add('active');
+  });
+  wordEls.forEach((wRow,li)=>{
+    wRow.forEach((span,wi)=>{
+      span.classList.remove('sung','current');
+      if(li===aLine){
+        if(wi<aWord)span.classList.add('sung');
+        else if(wi===aWord)span.classList.add('current');
+      }else if(li<aLine)span.classList.add('sung');
+    });
+  });
+}
+
+/* ── Player ── */
+const audio=document.getElementById('audio');
+const iconPlay=document.getElementById('iconPlay');
+const iconPause=document.getElementById('iconPause');
+const progressFill=document.getElementById('progressFill');
+const progressBar=document.getElementById('progressBar');
+const timeCur=document.getElementById('timeCur');
+const timeDur=document.getElementById('timeDur');
+const volSlider=document.getElementById('volSlider');
+const vinyl=document.getElementById('vinyl');
+const eqBars=document.querySelectorAll('.eq-bar');
+
+function fmt(s){if(isNaN(s))return'0:00';const m=Math.floor(s/60),sec=Math.floor(s%60);return m+':'+(sec<10?'0':'')+sec;}
+function setPlaying(on){
+  iconPlay.style.display=on?'none':'block';
+  iconPause.style.display=on?'block':'none';
+  vinyl.style.animationPlayState=on?'running':'paused';
+  eqBars.forEach(b=>on?b.classList.add('playing'):b.classList.remove('playing'));
+}
+
+audio.volume=parseFloat(volSlider.value);
+audio.addEventListener('loadedmetadata',()=>{timeDur.textContent=fmt(audio.duration);});
+audio.addEventListener('timeupdate',()=>{
+  const pct=audio.duration?(audio.currentTime/audio.duration)*100:0;
+  progressFill.style.width=pct+'%';
+  timeCur.textContent=fmt(audio.currentTime);
+  updateLyrics(audio.currentTime);
+});
+audio.addEventListener('ended',()=>{setPlaying(false);lastLine=-1;lastWord=-1;updateLyrics(-1);});
+
+function togglePlay(){if(audio.paused){audio.play();setPlaying(true);}else{audio.pause();setPlaying(false);}}
+function seek(d){audio.currentTime=Math.max(0,Math.min(audio.duration||0,audio.currentTime+d));}
+
+let dragging=false;
+function scrub(e){
+  const r=progressBar.getBoundingClientRect();
+  const p=Math.max(0,Math.min(1,(e.clientX-r.left)/r.width));
+  if(audio.duration)audio.currentTime=p*audio.duration;
+}
+progressBar.addEventListener('click',scrub);
+progressBar.addEventListener('mousedown',()=>dragging=true);
+document.addEventListener('mousemove',e=>{if(dragging)scrub(e);});
+document.addEventListener('mouseup',()=>dragging=false);
+progressBar.addEventListener('touchstart',e=>{dragging=true;e.preventDefault();},{passive:false});
+document.addEventListener('touchmove',e=>{
+  if(!dragging)return;
+  const r=progressBar.getBoundingClientRect();
+  const p=Math.max(0,Math.min(1,(e.touches[0].clientX-r.left)/r.width));
+  if(audio.duration)audio.currentTime=p*audio.duration;
+},{passive:true});
+document.addEventListener('touchend',()=>dragging=false);
+volSlider.addEventListener('input',()=>{audio.volume=parseFloat(volSlider.value);});
+document.addEventListener('keydown',e=>{if(e.code==='Space'&&document.activeElement.tagName!=='INPUT'){e.preventDefault();togglePlay();}});
+
+/* ── Pétalas ── */
+const itens=['🌻','🌼','✨','💛','🌸','🎵'];
+function criarPetal(){
+  const el=document.createElement('div');el.className='petal';
+  el.textContent=itens[Math.floor(Math.random()*itens.length)];
+  el.style.left=Math.random()*100+'vw';
+  el.style.fontSize=(Math.random()*14+10)+'px';
+  el.style.animationDuration=(Math.random()*3+5)+'s';
+  document.body.appendChild(el);setTimeout(()=>el.remove(),8000);
+}
+setInterval(criarPetal,400);
+</script>
+</body>
+</html>

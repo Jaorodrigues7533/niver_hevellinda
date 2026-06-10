@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>💖 Outros</title>
+<link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+
+<div class="container">
+  <div class="box">
+
+    <h1>💖 Outros</h1>
+
+    <img src="outros.jpeg" alt="Outros" class="img"/>
+
+    <div class="divider"></div>
+
+    <p>
+      Eu coloquei essa parte como "Outros" porque são coisas que não se encaixam em nenhuma categoria específica, mas que me lembram muito você e são muito especiais para mim.
+      <br><br>
+      Talvez isso pareça estranho, mas eu sou o tipo de pessoa que cria um carinho enorme por certas coisas. Um exemplo é meu copo do Palmeiras. Eu tenho tanto apego a ele que, quando deixei ele cair e vi que tinha trincado, fiquei muito triste. Mesmo assim, continuo usando ele até hoje, porque não consigo simplesmente deixá-lo de lado.
+      <br><br>
+      Também tem o pato CLK kkkkk. Eu gosto tanto dele que ele sempre fica perto de mim. Às vezes, quando estou nervoso, acabo pegando ele para brincar e me distrair um pouco. Pode parecer bobo, mas ele me traz uma sensação de conforto.
+      <br><br>
+      E tem o Blastoise, meu inicial favorito. Você sabia muito bem disso kkkkk. Teve um dia que eu deixei ele cair e ele se despedaçou inteiro. Na hora, entrei em desespero procurando cada pedacinho pelo chão. E quando consegui encontrar todas as peças, fiquei aliviado como se tivesse recuperado algo muito importante.
+      <br><br>
+      Acho que o que essas coisas têm em comum é que todas carregam lembranças e sentimentos. Não são apenas objetos para mim.
+      <br><br>
+      E é por isso que ainda guardo as cartinhas e as coisas que você me deu. Talvez para outras pessoas sejam apenas coisas simples, mas para mim elas têm valor. Elas fizeram parte da minha história, fizeram parte de momentos que vivi com você e carregam lembranças que eu gosto de guardar com carinho.
+      <br><br>
+      No fim, percebo que não me apego aos objetos em si. Eu me apego ao que eles representam. E muitas das coisas que guardo com mais carinho acabam me lembrando você.
+      <br><br>
+      Tudo ainda me lembra você...
+    </p>
+
+  </div>
+</div>
+
+<button class="voltar" onclick="location.href='index7.html'">Voltar</button>
+
+<script>
+const itens=['🌻','🌼','✨','💛','🌸','💖'];
+function criarPetal(){
+  const el=document.createElement('div');el.className='petal';
+  el.textContent=itens[Math.floor(Math.random()*itens.length)];
+  el.style.left=Math.random()*100+'vw';
+  el.style.fontSize=(Math.random()*14+10)+'px';
+  el.style.animationDuration=(Math.random()*3+5)+'s';
+  document.body.appendChild(el);setTimeout(()=>el.remove(),8000);
+}
+setInterval(criarPetal,350);
+</script>
+</body>
+</html>

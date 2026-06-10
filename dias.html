@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>📅 Dias</title>
+<link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+
+<div class="container">
+  <div class="box">
+
+    <h1>📅 Dias</h1>
+
+    <img src="dias.png" alt="Dias" class="img"/>
+
+    <div class="divider"></div>
+
+    <p>
+      Você me lembra muito os domingos.
+      <br><br>
+      Acho que isso acontece porque, por muito tempo, o domingo era o dia mais feliz da minha semana. Mas, pensando bem, não era exatamente por ser domingo. A verdade é que a minha felicidade era você.
+      <br><br>
+      Eu passava a semana inteira ansioso esperando esse dia chegar, porque sabia que iria te ver. E, por mais simples que fosse, isso já deixava minha semana muito melhor.
+      <br><br>
+      E quando chegava a hora de ir embora da sua casa, eu sempre ficava com aquele sentimento estranho. Ao mesmo tempo em que ficava chateado porque nosso tempo juntos tinha acabado, eu também voltava feliz, porque tinha passado o dia com você.
+      <br><br>
+      Acho que era por isso que, mesmo quando o domingo terminava, eu não conseguia ficar triste por muito tempo. Logo eu já estava ansioso de novo, contando os dias e mal esperando o próximo domingo chegar kkkkk.
+      <br><br>
+      Talvez você me lembre os domingos porque eles eram o momento da semana em que eu mais me sentia feliz. E, no fundo, essa felicidade nunca foi por causa do dia. Era por sua causa.
+    </p>
+
+  </div>
+</div>
+
+<button class="voltar" onclick="location.href='index7.html'">Voltar</button>
+
+<script>
+const itens=['🌻','🌼','✨','💛','🌸'];
+function criarPetal(){
+  const el=document.createElement('div');el.className='petal';
+  el.textContent=itens[Math.floor(Math.random()*itens.length)];
+  el.style.left=Math.random()*100+'vw';
+  el.style.fontSize=(Math.random()*14+10)+'px';
+  el.style.animationDuration=(Math.random()*3+5)+'s';
+  document.body.appendChild(el);setTimeout(()=>el.remove(),8000);
+}
+setInterval(criarPetal,350);
+</script>
+</body>
+</html>
